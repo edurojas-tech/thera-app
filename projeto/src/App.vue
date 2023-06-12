@@ -1,7 +1,5 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import Login from "./views/Login.vue"
-import Ponto from "./views/Ponto.vue"
 import TopBar from "./components/TopBar.vue"
 
 let user = ref('')
