@@ -23,7 +23,7 @@ git clone https://github.com/edurojasDev/thera-app.git
 2. Acesse o diretório do projeto:
 
 ```
-cd seu-projeto
+cd projeto
 ```
 
 3. Instale as dependências do projeto usando o npm:
