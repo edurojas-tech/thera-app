@@ -1,4 +1,6 @@
 import axios from "axios";
+import Time from '../utils/time'
+
 const urlRegistro = (id) =>
   `https://theraponto.dev.thera.com.br:4433/api/Timesheet/${id}`;
 
@@ -16,7 +18,6 @@ function setData(id, marcacao) {
     })
     .then((res) => {
       alert("Marcação de ponto registrado com Sucesso!");
-      console.log(res)
     }).catch(()=>{
       alert("Sem Marcação registrada!");
     })

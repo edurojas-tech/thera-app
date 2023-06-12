@@ -43,32 +43,26 @@
     }, 400);
   }
 
-  function validador(){ 
-    const dataATUAL = new Date(listagem.value[0].start)
-    const diavalidar = new Date()
-    const dia1 = dataATUAL.getUTCDate()
-    const dia2 = diavalidar.getDate()
-  
-    // validaMarcacoes
-    startDay.value = listagem.value[0].start
-    startLunch = listagem.value[0].startLunch
-    endLunch = listagem.value[0].endLunch
-    end = listagem.value[0].end
-    return dia1 == dia2
+  function validador(marcacao){ 
+    const d = new Date()
+    const dia = d.getTime()
+    const dataRegistrada = new Date(listagem.value[0][marcacao]).getDate()
+    const dataAtual = new Date(dia).getDate()
+    return dataRegistrada == dataAtual
   }
 
-  function cadastrar() {
+  function cadastrar(marcacao) {
     if(listagem.value.length <= 0){  
       registrar.setData()
     }else {
-      listagem.value[0].start && validador()
+      listagem.value[0].start && validador(marcacao)
         ? alert("Marcação já registrada!") 
         : registrar.setData()
     }
   }
 
-  function atualizaPonto(marcacao, prevMarcacao) {
-    if(listagem.value[0][marcacao] && validador()){
+  function atualizaPonto(marcacao, prevMarcacao) { 
+    if(listagem.value[0][marcacao]){
       alert("Marcação já registrada!")
     }else{
       listagem.value[0][prevMarcacao] 
@@ -100,7 +94,7 @@
         <Info :dado="comparaAlmoco ? comparaAlmoco : '00:00:00'" color="yellow"/>
       </div>
       <div class="ponto__buttons">
-        <Button dado="CHEGUEI" @click="cadastrar()"/>
+        <Button dado="CHEGUEI" @click="cadastrar('start')"/>
         <Button dado="FUI ALMOÇAR" @click="atualizaPonto('startLunch', 'start')"/>
         <Button dado="VOLTEI" @click="atualizaPonto('endLunch', 'startLunch')"/>
         <Button dado="FUI EMBORA" @click="atualizaPonto('end', 'endLunch')"/>
@@ -118,8 +112,8 @@
             </thead>
             <tr v-for="item in listagem" :key="item">
               <td>{{ formatar.dataFormatada(item.start)}}</td>
-              <td id="horaInicial">{{ formatar.startDay(item.start)}}</td>
-              <td id="startAlmoco">{{ formatar.horarioFormatado(item.startLunch) }}</td>
+              <td id="horaInicial">{{ formatar.startDay(item.start) }}</td>
+              <td id="startAlmoco">{{ formatar.horarioFormatado(item.startLunch)}}</td>
               <td id="endAlmoco">{{ formatar.horarioFormatado(item.endLunch) }}</td>
               <td id="horaFinal">{{ formatar.horarioFormatado(item.end) }}</td>
               <td> {{ comparaTime ? comparaTime : '00:00:00' }} </td>

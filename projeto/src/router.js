@@ -4,7 +4,7 @@ import Ponto from "./views/Ponto.vue";
 
 const routes = [
   { path: "/", component: Login },
-  { path: "/ponto", component: Ponto },
+  { path: "/ponto", component: Ponto }
 ];
 
 const router = createRouter({
