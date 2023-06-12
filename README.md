@@ -1,4 +1,4 @@
-# README - Meu Projeto Vue.js + Vite.js
+# Projeto Vue.js + Vite.js
 
 Este é o README para o seu projeto desenvolvido com Vue.js + Vite.js, usando Vue Router, BEM CSS e Axios para consumo de API.
 
