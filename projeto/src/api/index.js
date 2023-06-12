@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const rotaPonto = () => (location.href = `http://${location.host}/ponto`);
+const rotaPonto = () => (location.href = `${location.origin}/ponto`);
 const login = (form, user, senha, password = "password") => {
   const formData = new FormData(document.getElementById(form));
   axios

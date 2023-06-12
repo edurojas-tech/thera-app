@@ -1,5 +1,4 @@
 <script setup>
-import axios from 'axios';
 import api from '../api'
 
 function login(ev) {
